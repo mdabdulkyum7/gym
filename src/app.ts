@@ -17,4 +17,8 @@ app.use('/api', router);
 // Error Handling Middleware
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+  res.send('🚀 Server is running successfully!');
+});
+
 export default app;
