@@ -1,9 +1,11 @@
+// src/config/env.ts
 import dotenv from 'dotenv';
+import { cleanEnv, str, port } from 'envalid';
 
 dotenv.config();
 
-export const env = {
-  PORT: process.env.PORT || '5000',
-  DATABASE_URL: process.env.DATABASE_URL,
-  JWT_SECRET: process.env.JWT_SECRET,
-};
+export const env = cleanEnv(process.env, {
+  PORT: port({ default: 5000, desc: 'Server port' }),
+  DATABASE_URL: str({ desc: 'Database connection URL' }),
+  JWT_SECRET: str({ desc: 'JWT secret key for token signing and verification' }),
+});

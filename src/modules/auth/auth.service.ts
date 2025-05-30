@@ -1,17 +1,18 @@
+// src/modules/auth/auth.service.ts
 import prisma from '../../config/db';
 import { generateToken } from '../../utils/jwt';
 import bcrypt from 'bcrypt';
-import { Role } from '../../constants/role';
+import { $Enums } from '@prisma/client'; // Import Prisma's enums
 
 export const authService = {
-  async register(data: { email: string; password: string; name: string; role: Role }) {
+  async register(data: { email: string; password: string; name: string; role: $Enums.Role }) {
     const hashedPassword = await bcrypt.hash(data.password, 10);
     const user = await prisma.user.create({
       data: {
         email: data.email,
         password: hashedPassword,
         name: data.name,
-        role: data.role,
+        role: data.role, // Now typed as $Enums.Role
       },
     });
     const token = generateToken({ id: user.id, role: user.role });

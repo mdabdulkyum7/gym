@@ -1,15 +1,24 @@
-import { Request, Response } from 'express';
+// src/modules/auth/auth.controller.ts
+import { Request, Response, NextFunction } from 'express';
 import { authService } from './auth.service';
 import { sendSuccessResponse } from '../../utils/response';
 
 export const authController = {
-  async register(req: Request, res: Response) {
-    const data = await authService.register(req.body);
-    sendSuccessResponse(res, 201, 'User registered successfully', data);
+  register: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const data = await authService.register(req.body);
+      sendSuccessResponse(res, 201, 'User registered successfully', data);
+    } catch (error) {
+      next(error);
+    }
   },
 
-  async login(req: Request, res: Response) {
-    const data = await authService.login(req.body);
-    sendSuccessResponse(res, 200, 'Login successful', data);
+  login: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const data = await authService.login(req.body);
+      sendSuccessResponse(res, 200, 'Login successful', data);
+    } catch (error) {
+      next(error);
+    }
   },
 };
