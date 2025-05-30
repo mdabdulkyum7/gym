@@ -51,7 +51,7 @@ JWT_SECRET= your_secret
 ```
 
 ## Live Hosting Link
-[Live URL](#)
+[Live URL](https://gym-management-mxls.onrender.com)
 
 ## Postman Documentation
 [Postman Collection](#)
