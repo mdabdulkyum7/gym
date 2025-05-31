@@ -8,11 +8,10 @@ import { z } from 'zod';
 const router = express.Router();
 
 const createScheduleSchema = z.object({
-  body: z.object({
-    date: z.string().transform((val) => new Date(val)),
-    startTime: z.string().transform((val) => new Date(val)),
-    trainerId: z.string(),
-  }),
+  date: z.string().transform((val) => new Date(val)),
+  startTime: z.string().transform((val) => new Date(val)),
+  endTime: z.string().transform((val) => new Date(val)),
+  trainerId: z.string(),
 });
 
 router.post(
