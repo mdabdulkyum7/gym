@@ -7,9 +7,10 @@ export const userController = {
   createTrainer: (async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data = await userService.createTrainer(req.body);
+      console.log('Trainer created:', data);
       sendSuccessResponse(res, 201, 'Trainer created successfully', data);
     } catch (error) {
       next(error);
     }
   }) as RequestHandler,
-};
+}; 
