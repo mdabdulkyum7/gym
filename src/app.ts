@@ -18,7 +18,12 @@ app.use('/api', router);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  res.send('🚀 Server is running successfully!');
+  const data = {
+    "status": 200,
+    "success": true,
+    "message": "🚀 Server is renning successfully."
+  }
+  res.send(data);
 });
 
 export default app;
