@@ -23,4 +23,6 @@ router.post(
   userController.createTrainer
 );
 
+router.get('/', authMiddleware([$Enums.Role.Admin]), userController.getAllUsers)
+
 export const userRoutes = router;

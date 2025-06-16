@@ -12,4 +12,17 @@ export const userController = {
       next(error);
     }
   }) as RequestHandler,
+
+
+  getAllUsers: (async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const data = await userService.getUsers();
+        sendSuccessResponse(res, 201, "All Users", data);
+    } catch (error) {
+      next(error);
+    }
+  })
+
+
+
 }; 
