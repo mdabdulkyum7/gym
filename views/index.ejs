@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Status</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #00ff88;
+    }
+
+    .status {
+      font-size: 20px;
+      color: #ff00c8;
+      animation: blink 1s infinite;
+      margin-top: 10px;
+    }
+
+    .message {
+      font-size: 18px;
+      margin-top: 15px;
+      color: #00ffa2;
+      font-weight: bold;
+    }
+
+    pre {
+      text-align: left;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-left: 4px solid #00ffcc;
+      border-radius: 10px;
+      color: #b2fff3;
+      overflow-x: auto;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Welcome to the server of Gym!</h1>
+    
+    <div class="status">Server is running...</div>
+
+    <div class="message"><%= data.message %></div>
+
+    <pre><%= JSON.stringify(data, null, 2) %></pre>
+  </div>
+</body>
+</html>
